@@ -15,20 +15,24 @@ app.use(express.static(publicPath));
 io.on('connection',(socket)=>{
   console.log('New user connected');
 
-  socket.emit('newEmail',{
-    from:'ratnambar123gupta@gmail.com',
-    text: 'hey what is going on ?',
-    creatAt:123
-  });
+  // socket.emit('newEmail',{
+  //   from:'ratnambar123gupta@gmail.com',
+  //   text: 'hey what is going on ?',
+  //   creatAt:123
+  // });
 
-  socket.emit('newMsg',{
-    from:'ambarkr321@gmail.com',
-    text:'hey where are you?'
-  });
+  // socket.emit('newMsg',{
+  //   from:'ambarkr321@gmail.com',
+  //   text:'hey where are you?'
+  // });
 
   socket.on('createEmail',(check)=>{
     console.log('createEmail',check);
-    io.emit('newMsg',{
+    // io.emit('newMsg',{
+    //   from:check.from,
+    //   text:check.text
+    // });
+    socket.broadcast.emit('newMsg',{
       from:check.from,
       text:check.text
     });
